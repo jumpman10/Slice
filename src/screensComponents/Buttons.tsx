@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView, Dimensions, Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import { BtnComponent } from '../components/BtnComponent';
@@ -6,28 +6,20 @@ import { Button } from '../examples/Button';
 import Animation from '../examples/Animation';
 import { Card } from '../examples/Card';
 import Switch from '../examples/Switch';
+import { ComponentContainer } from '../components/ComponentCotainer';
+import { Button1 } from './buttons/Button1';
+import { Button2 } from './buttons/Button2';
+import { Button3 } from './buttons/Button3';
 
 interface Props extends StackScreenProps <any , any>{};
 
 const {width} = Dimensions.get('window')
 
 
-export const Components = ({navigation,route}  : Props) =>{
-
-  const goButtons =()=>{
-    navigation.navigate('Buttons')
-  }
-  const goAnimations =()=>{
-    navigation.navigate('Animations')
-  }
-  const goCards =()=>{
-    navigation.navigate('Cards')
-  }
-  const goMoreComponents =()=>{
-    navigation.navigate('MoreComponents')
-  }
-
-  
+export const Buttons = ({navigation,route}  : Props) =>{
+  const [selectColor,setSelectColor] = useState('red')
+  const [selectColor2,setSelectColor2] = useState('black')
+  const [selectColor3,setSelectColor3] = useState('red')
     return (
             <ScrollView contentContainerStyle={styles.container}>
               <View style={styles.header}>
@@ -38,18 +30,15 @@ export const Components = ({navigation,route}  : Props) =>{
                 <Image source={require('../../assests/slicebanner.png')} resizeMode='contain'
                  style={{height:'100%',width:'100%'}}/>
               </View>
-              <BtnComponent text='Buttons' onPress={goButtons}>
-                <Button/>
-              </BtnComponent>
-              <BtnComponent text='Animations' onPress={goAnimations}>
-                <Animation/>
-              </BtnComponent>
-              <BtnComponent text='Cards' onPress={goCards}>
-                <Card/>
-              </BtnComponent>
-              <BtnComponent text='More' onPress={goMoreComponents}>
-                <Switch/>
-              </BtnComponent>
+              <ComponentContainer onPress={setSelectColor}>
+                <Button1 color={selectColor}/>
+              </ComponentContainer>
+              <ComponentContainer onPress={setSelectColor2}>
+                <Button2 color={selectColor2}/>
+              </ComponentContainer>
+              <ComponentContainer onPress={setSelectColor3}>
+                <Button3 color={selectColor3}/>
+              </ComponentContainer>
             </ScrollView>
           );
 }

@@ -3,13 +3,14 @@ import { ScrollView, Dimensions, Image, StatusBar,StyleSheet, Text, TouchableOpa
 
 interface Props {
     text:string,
-    children:any
+    children:any,
+    onPress:any
   }
 
 
-export const BtnComponent =({text,children}:Props)=>{
+export const BtnComponent =({text,children,onPress}:Props)=>{
     return(
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={()=>onPress()}>
             <View style={styles.buttonContent}>
                 {children}
             </View>

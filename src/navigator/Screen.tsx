@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import { Home } from '../screens/Home';
-import { Components } from '../screens/Components';
+import { Settings } from '../screens/Settings';
+import { Contact } from '../screens/Contact';
+import { ComponentsStack } from './ComponentsStack';
+import { DesingsStack } from './DesingsStack';
 
 
 
@@ -9,7 +12,10 @@ import { Components } from '../screens/Components';
 
 export type RootStackParams = {
  Home:undefined,
- Components:undefined,
+ ComponentsStack:undefined,
+ DesingsStack:undefined,
+ Settings:undefined,
+ Contact:undefined
 }
 const Stack = createStackNavigator<RootStackParams>();
 
@@ -27,7 +33,13 @@ export const Screens= () => {
  
           <Stack.Screen name="Home" component={Home} 
           options={{  headerShown:false }}/>
-          <Stack.Screen name="Components" component={Components} 
+          <Stack.Screen name="ComponentsStack" component={ComponentsStack} 
+          options={{  headerShown:false }}/>
+          <Stack.Screen name="DesingsStack" component={DesingsStack} 
+          options={{  headerShown:false }}/>
+          <Stack.Screen name="Settings" component={Settings} 
+          options={{  headerShown:false }}/>
+          <Stack.Screen name="Contact" component={Contact} 
           options={{  headerShown:false }}/>
     </Stack.Navigator>
   );

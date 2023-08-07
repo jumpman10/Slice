@@ -15,33 +15,23 @@ export const Home = ({navigation,route}  : Props) =>{
                 <Image source={require('../../assests/SliceLogo.png')} resizeMode='contain' style={styles.img}/>
               </View>
               <View style={styles.body}>
-                <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('Components')}>
+                <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('ComponentsStack')}>
                     <Image source={require('../../assests/code.png')} resizeMode='contain' style={styles.buttonBackground} />
-                    <Text style={styles.buttonText}>Componentes</Text>
+                    <Text style={styles.buttonText}>Components</Text>
                 </TouchableOpacity>
-                 <TouchableOpacity style={styles.button}>
+                 <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('DesingsStack')}>
                     <Image source={require('../../assests/uiux.png')} resizeMode='contain' style={styles.buttonBackground} />
-                    <Text style={styles.buttonText}>Diseños</Text>
+                    <Text style={styles.buttonText}>Ux/UI Desings</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity style={styles.button}>
+                  <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('Settings')}>
                     <Image source={require('../../assests/conf.png')} resizeMode='contain' style={styles.buttonBackground} />
-                    <Text style={styles.buttonText}>Configuración</Text>
+                    <Text style={styles.buttonText}>Settings</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity style={styles.button}>
+                  <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('Contact')}>
                     <Image source={require('../../assests/contact.png')} resizeMode='contain' style={styles.buttonBackground} />
-                    <Text style={styles.buttonText}>Contactanos</Text>
+                    <Text style={styles.buttonText}>Contact us</Text>
                   </TouchableOpacity>
               </View>
-              {/* <View style={styles.footer}>
-                <TouchableOpacity style={styles.buttonFooter2}>
-                  <Image source={require('../../assests/home.png')} resizeMode='contain' style={styles.buttonBackground} />
-                  <Text style={styles.footerText}>Home</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonFooter}>
-                  <Image source={require('../../assests/fav.png')} resizeMode='contain' style={styles.buttonBackground} />
-                  <Text style={styles.footerText}>Favoritos</Text>
-                </TouchableOpacity>
-              </View> */}
             </View>
           );
         }
@@ -88,14 +78,6 @@ export const Home = ({navigation,route}  : Props) =>{
             width:'100%',
             flexDirection: 'row',
           },
-          item: {
-            width: '30%',
-            height: '30%',
-            borderWidth:1,
-            borderColor:'gray',
-            borderRadius:20,
-            marginHorizontal:20
-          },
           button:{
             width:'40%',
             height:'35%',
@@ -126,31 +108,4 @@ export const Home = ({navigation,route}  : Props) =>{
             position:'absolute',
             bottom:'10%'
           },
-          footerText:{
-            color:'black',
-            fontSize:14,
-            fontWeight:'200',
-            position:'absolute',
-            bottom:'10%'
-          },
-          buttonFooter:{
-            width:'50%',
-            height:'100%',
-            alignItems:'center'
-          },
-          buttonFooter2:{
-            width:'50%',
-            height:'100%',
-            alignItems:'center',
-            backgroundColor:'#DDDDDD'
-          },
-          footer:{
-            width:'100%',
-            height:'10%',
-            alignItems:'center',
-            justifyContent:'space-around',
-            flexDirection:'row',
-            borderTopWidth:0.5,
-            borderTopColor:'gray'
-          }
         });

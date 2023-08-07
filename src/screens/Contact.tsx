@@ -6,27 +6,14 @@ import { Button } from '../examples/Button';
 import Animation from '../examples/Animation';
 import { Card } from '../examples/Card';
 import Switch from '../examples/Switch';
+import { HomeExample } from '../examples/HomeExample';
 
 interface Props extends StackScreenProps <any , any>{};
 
 const {width} = Dimensions.get('window')
 
 
-export const Components = ({navigation,route}  : Props) =>{
-
-  const goButtons =()=>{
-    navigation.navigate('Buttons')
-  }
-  const goAnimations =()=>{
-    navigation.navigate('Animations')
-  }
-  const goCards =()=>{
-    navigation.navigate('Cards')
-  }
-  const goMoreComponents =()=>{
-    navigation.navigate('MoreComponents')
-  }
-
+export const Contact = ({navigation,route}  : Props) =>{
   
     return (
             <ScrollView contentContainerStyle={styles.container}>
@@ -38,16 +25,16 @@ export const Components = ({navigation,route}  : Props) =>{
                 <Image source={require('../../assests/slicebanner.png')} resizeMode='contain'
                  style={{height:'100%',width:'100%'}}/>
               </View>
-              <BtnComponent text='Buttons' onPress={goButtons}>
-                <Button/>
+              <BtnComponent text='Home'>
+                <HomeExample/>
               </BtnComponent>
-              <BtnComponent text='Animations' onPress={goAnimations}>
+              <BtnComponent text='Login'>
                 <Animation/>
               </BtnComponent>
-              <BtnComponent text='Cards' onPress={goCards}>
+              <BtnComponent text='Setting'>
                 <Card/>
               </BtnComponent>
-              <BtnComponent text='More' onPress={goMoreComponents}>
+              <BtnComponent text='More'>
                 <Switch/>
               </BtnComponent>
             </ScrollView>
