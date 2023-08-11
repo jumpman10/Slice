@@ -8,6 +8,7 @@ import { Card } from '../examples/Card';
 import Switch from '../examples/Switch';
 import { HomeExample } from '../examples/HomeExample';
 import { Btn } from '../components/Btn';
+import { Categories } from '../screensDesings/componentsDesing/Categories';
 
 interface Props extends StackScreenProps <any , any>{};
 
@@ -15,9 +16,18 @@ const {width} = Dimensions.get('window')
 
 
 export const Uiux = ({navigation,route}  : Props) =>{
-  
+  const categories = [
+  {name:'Wallet',icon:'wallet-outline'},
+  {name:'E-commerce',icon:'bar-chart-outline'},
+  {name:'News',icon:'newspaper-outline'},
+  {name:'Music',icon:'play-circle-outline'},
+  {name:'Login & Register',icon:'person-add-outline'},
+  {name: 'Random',icon:'shuffle-outline'},]
+  const goTo=(e:string)=>{
+    navigation.navigate(e)
+}
     return (
-            <ScrollView contentContainerStyle={styles.container}>
+            <View style={styles.container}>
               <View style={styles.header}>
                 <TouchableOpacity onPress={()=>navigation.goBack()} style={{height:'100%', position:'absolute',left:15,width:'13%',zIndex:1000,}}>
                   <Image source={require('../../assests/back.png')} resizeMode='contain'
@@ -26,12 +36,8 @@ export const Uiux = ({navigation,route}  : Props) =>{
                 <Image source={require('../../assests/slicebanner.png')} resizeMode='contain'
                  style={{height:'100%',width:'100%'}}/>
               </View>
-              <Text style={styles.text}> En esta sección Ui/Ux desings podrás 
-              maquetar, diseñar screens a gusto con los componentes que existen en Slice. </Text>
-              <Btn title='Desafio' onPress={navigation.navigate} to='Challenge'/>
-              <Btn title='Recomendaciones'/>
-              <Btn title='Libre'/>
-            </ScrollView>
+              <Categories data={categories} onPress={goTo}/>
+            </View>
           );
 }
         

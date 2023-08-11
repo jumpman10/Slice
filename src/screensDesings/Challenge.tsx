@@ -4,6 +4,7 @@ import { StackScreenProps } from '@react-navigation/stack';
 import { Btn } from '../components/Btn';
 import { Palette } from './componentsDesing/Palette';
 import { Background } from './componentsDesing/Background';
+import { Categories } from './componentsDesing/Categories';
 
 interface Props extends StackScreenProps <any , any>{};
 
@@ -17,6 +18,7 @@ export const Challenge = ({navigation,route}  : Props) =>{
     const palette3 = ['#001524','#15616D','#FFECD1','#FF7D00','#78290F']
     const palette4 = ['#EF476F','#FFD166','#06D6A0','#118AB2','#073B4C']
     const palette5 = ['#6F1D1B','#BB9457','#432818','#99582A','#FFE6A7']
+    const categories = ['Wallet','E-commerce','News','Music','Login','Home']
     const [steps,setSteps] = useState(0)
     const [selectedPalette, setSelectedPalette] = useState([])
     const [selectedBackground, setSelectedBackground] = useState('')
@@ -28,9 +30,12 @@ export const Challenge = ({navigation,route}  : Props) =>{
         setSteps(2)
         setSelectedBackground(color)
     }
+    const goTo=(e:string)=>{
+        navigation.navigate(e)
+    }
     return (
-            <ScrollView
-            contentContainerStyle={[styles.container,{backgroundColor:selectedBackground ? selectedBackground:'white'}]}>
+            <View
+            style={[styles.container,{backgroundColor:selectedBackground ? selectedBackground:'white'}]}>
             {   start===false ?
                 <>
                 <View style={styles.header}>
@@ -51,6 +56,16 @@ export const Challenge = ({navigation,route}  : Props) =>{
                         (steps===0)&&
                         (   
                             <>
+                                <Text style={styles.text}>Selecciona la categoría que quieras diseñar </Text>
+                                <Categories data={categories} onPress={goTo}/>
+                            </>
+                            
+                        )
+                    }
+                    { 
+                        (steps===1)&&
+                        (   
+                            <>
                                 <Text style={styles.text}>Selecciona la paleta de colores</Text>
                                 <Palette data={palette1} onPress={selectPalette} />
                                 <Palette data={palette2} onPress={selectPalette} />
@@ -61,7 +76,7 @@ export const Challenge = ({navigation,route}  : Props) =>{
                         )
                     }
                     { 
-                        (steps===1)&&
+                        (steps===2)&&
                         (   
                             <>
                                 <Text style={styles.text}>Selecciona el fondo</Text>
@@ -69,18 +84,9 @@ export const Challenge = ({navigation,route}  : Props) =>{
                             </>
                         )
                     }
-                    { 
-                        (steps===2)&&
-                        (   
-                            <>
-                                <Text style={styles.text}>Selecciona el tipo de diseño que desees hacer</Text>
-                                
-                            </>
-                        )
-                    }
                 </>   
             }
-            </ScrollView>
+            </View>
           );
 }
         
@@ -105,7 +111,8 @@ const styles = StyleSheet.create({
             textAlign:'center',
             fontSize:40,
             fontWeight:'100',
-            padding:10
+            padding:10,
+            height:'25%'
           },
          
          
