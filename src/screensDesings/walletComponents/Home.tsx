@@ -4,7 +4,7 @@ import { StackScreenProps } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
-export const Home = () =>{
+export const Home = ({navigation,route}) =>{
     const data = [{title:'Transferencia realizada',price:'-$3.000',fecha:'10 dic. 15:43',id:'1',color:'red',type:'transf',status:'ok'},
                   {title:'Ingreso recibido',price:'+$7.000',fecha:'4 dic. 22:31',id:'2',color:'green',type:'ingr',status:'ok'}, 
                   {title:'Pago realizado',price:'-$4.582,34',fecha:'25 nov. 12:17',id:'3',color:'red',type:'pago',status:'ok'},
@@ -20,8 +20,12 @@ export const Home = () =>{
                <View
                style={styles.container}>
                    <View style={styles.header}>
-                       <Text style={styles.t3}>Hola!</Text>
-                       <Text style={styles.t3}>Juan Moyano</Text>
+                        <Text style={styles.t3}>Hola,Juan!</Text>
+                        <View style={{flexDirection:'row',width:120,height:'100%',alignItems:'center'}}>
+                          <Image source={require('../../../assests/slicebanner.png')}
+                          resizeMode='contain' style={{height:'100%',width:'100%'}}/>
+                          <Text style={[styles.t3,{position:'absolute',right:6,bottom:5}]}>Wallet</Text>
+                        </View>
                    </View> 
                    <View style={styles.actions}>
                        <Text style={[styles.t3,{color:'black'}]}>Total</Text>
@@ -52,7 +56,7 @@ export const Home = () =>{
                        </View>
                        <View style={{flexDirection:'row', width:'100%',justifyContent:'space-around'}}>
                          <View style={[styles.actionsBtnPos]}>
-                             <TouchableOpacity style={styles.actionsBtn}>
+                             <TouchableOpacity style={styles.actionsBtn} onPress={()=>navigation.navigate('Money')}>
                                <Icon 
                                name="cash-outline"
                                color="black"
@@ -104,7 +108,6 @@ export const Home = () =>{
                      <FlatList
                      data={data}
                      keyExtractor={(e)=>e.id}
-   
                      renderItem={({item})=>(
                        <View style={styles.itemActivity}>
                          <View style={{flexDirection:'row'}}>
@@ -161,8 +164,10 @@ export const Home = () =>{
                backgroundColor:'black',
                borderBottomColor:'grey',
                borderBottomWidth:2,
-               justifyContent:'center',
-               alignItems:'flex-start',
+               flexDirection:'row',
+               justifyContent:'space-between',
+               alignItems:'center',
+               paddingHorizontal:20
              },
              t1:{
                color:'black',

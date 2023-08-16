@@ -18,7 +18,7 @@ const {width} = Dimensions.get('window')
 export const Uiux = ({navigation,route}  : Props) =>{
   const categories = [
   {name:'Wallet',icon:'wallet-outline'},
-  {name:'E-commerce',icon:'bar-chart-outline'},
+  {name:'Ecommerce',icon:'bar-chart-outline'},
   {name:'News',icon:'newspaper-outline'},
   {name:'Music',icon:'play-circle-outline'},
   {name:'Login & Register',icon:'person-add-outline'},

@@ -61,7 +61,6 @@ export const Wallet = () => {
           size={ 25 }
           />
         )}}/>
-        
       
     </Tab.Navigator>
   );

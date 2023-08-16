@@ -3,6 +3,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Uiux } from '../screens/Uiux';
 import { Challenge } from '../screensDesings/Challenge';
 import { Wallet } from '../screensDesings/Wallet';
+import { Ecommerce } from '../screensDesings/Ecommerce';
+import { Money } from '../screensDesings/walletComponents/Money';
 
 
 
@@ -11,7 +13,9 @@ import { Wallet } from '../screensDesings/Wallet';
 export type RootStackParams = {
  Uiux:undefined,
  Challenge:undefined,
- Wallet:undefined
+ Wallet:undefined,
+ Ecommerce:undefined,
+ Money:undefined
 }
 const Stack = createStackNavigator<RootStackParams>();
 
@@ -29,6 +33,10 @@ export const DesingsStack= () => {
           <Stack.Screen name="Uiux" component={Uiux} 
           options={{  headerShown:false }}/>
           <Stack.Screen name="Wallet" component={Wallet} 
+          options={{  headerShown:false }}/>
+          <Stack.Screen name="Money" component={Money} 
+          options={{  headerShown:false }}/>
+          <Stack.Screen name="Ecommerce" component={Ecommerce} 
           options={{  headerShown:false }}/>
     </Stack.Navigator>
   );
