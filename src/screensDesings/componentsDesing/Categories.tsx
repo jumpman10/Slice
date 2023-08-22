@@ -10,21 +10,19 @@ interface Props {
 
 export const Categories= ({data,onPress,to}:Props) =>{
   
-    return (
+return (
+        
         <View style={styles.container}>
-        { data.map((e,i)=>
-        <TouchableOpacity key={i} style={styles.button} onPress={()=>onPress(e)}>  
-            <Icon 
-              name={e.icon}
-              color={"black"}
-              size={ 50 }
-            />
-            <Text   style={styles.text}>{e.name}</Text>
-        </TouchableOpacity>
-        )
-            } 
+          { data.map( (e:{ name: string, icon: string; },i: React.Key) =>
+            <TouchableOpacity key={i} style={styles.button} onPress={()=>onPress(e.name)}>  
+                <Icon name={e.icon} color={"black"} size={ 50 }/>
+                <Text   style={styles.text}>{e.name}</Text>
+            </TouchableOpacity> 
+          ) } 
         </View>
-          );
+        
+        
+);
 }
         
 

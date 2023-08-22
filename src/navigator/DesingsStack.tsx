@@ -5,6 +5,7 @@ import { Challenge } from '../screensDesings/Challenge';
 import { Wallet } from '../screensDesings/Wallet';
 import { Ecommerce } from '../screensDesings/Ecommerce';
 import { Money } from '../screensDesings/walletComponents/Money';
+import { Music } from '../screensDesings/Music';
 
 
 
@@ -15,7 +16,8 @@ export type RootStackParams = {
  Challenge:undefined,
  Wallet:undefined,
  Ecommerce:undefined,
- Money:undefined
+ Money:undefined,
+ Music:undefined
 }
 const Stack = createStackNavigator<RootStackParams>();
 
@@ -37,6 +39,8 @@ export const DesingsStack= () => {
           <Stack.Screen name="Money" component={Money} 
           options={{  headerShown:false }}/>
           <Stack.Screen name="Ecommerce" component={Ecommerce} 
+          options={{  headerShown:false }}/>
+          <Stack.Screen name="Music" component={Music} 
           options={{  headerShown:false }}/>
     </Stack.Navigator>
   );

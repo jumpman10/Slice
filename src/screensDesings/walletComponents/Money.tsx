@@ -1,11 +1,20 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import { ScrollView, Dimensions, Image, StatusBar, StyleSheet, Text, TouchableOpacity, View, FlatList, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
 export const Money= () =>{
+  const inputRef = useRef(null);
+  const [value, setValue]=useState('0')
+  const data = 
+  useEffect(() => {
+    setTimeout(()=>{
+  inputRef.current.focus()
+    },0)
+    
+  }, []);
     return(
-        <View style={styles.container}>
+        <View style={styles.container} >
             <View style={styles.header}>
                 <View style={{flexDirection:'row',width:120,height:'100%',alignItems:'center'}}>
                     <Image source={require('../../../assests/slicebanner.png')}
@@ -13,10 +22,15 @@ export const Money= () =>{
                     <Text style={[styles.t3,{position:'absolute',right:6,bottom:5}]}>Wallet</Text>
                 </View>
             </View>
-            <View style={styles.inputContainer}>
+            <View style={styles.inputContainer}  >
             <Text style={[styles.t3,styles.text]}>Ingresa el monto</Text>
                 <TextInput
-                style={styles.input}>
+                ref={inputRef}
+                style={styles.input}
+                value={value}
+                inputMode='numeric'
+                keyboardType='number-pad'
+                onChangeText={setValue}>
                 </TextInput>
             </View>
         </View>
@@ -38,7 +52,10 @@ const styles = StyleSheet.create({
       flexDirection:'row',
       justifyContent:'center',
       alignItems:'center',
-      paddingHorizontal:20
+      paddingHorizontal:20,
+      position:'absolute',
+      top:0,
+      zIndex:-100
     },
     t1:{
       color:'black',
@@ -67,16 +84,16 @@ const styles = StyleSheet.create({
     },
     inputContainer:{
         width:'100%',
-        height:200,
+        height:400,
         justifyContent:'center',
         alignItems:'center'
     },
     input:{
         width:'80%',
-        height:70,
-        borderWidth:1,
-        borderColor:'black',
-        borderRadius:20
+        height:200,
+        color:'black',
+        textAlign:'center',
+        fontSize:60
     }
    
   });
