@@ -3,6 +3,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Home } from './musicComponents/Home';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { Search } from './musicComponents/Search';
+import { Library } from './musicComponents/Library';
+import { View } from 'react-native';
+import { BlurView } from '@react-native-community/blur';
 
 
 
@@ -18,9 +22,14 @@ const Tabs =()=>{
   return(
   <Tab.Navigator
   screenOptions={{
-      tabBarActiveBackgroundColor:'#FFC2D1',
+      // tabBarActiveBackgroundColor:'rgba(255, 194, 209, 1)',
       tabBarActiveTintColor:'black',
-      tabBarStyle:{height:60,}
+      tabBarStyle:{height:60,position:'absolute'},
+      tabBarInactiveTintColor:'black',
+      tabBarBackground: () => (
+        <BlurView blurType="light"
+        blurAmount={100}  style={{height:'100%',width:'100%'}} />
+      ),
   }}
   >
     <Tab.Screen name="Home" component={Home} 
@@ -33,6 +42,26 @@ const Tabs =()=>{
         size={ 25 }
         />
       )}}/>  
+      <Tab.Screen name="Search"  component={Search}
+    options={{  
+      headerShown:false, 
+      tabBarIcon:()=>(
+        <Icon
+        name="search"
+        color="black"
+        size={ 25 }
+        />
+      )}}/>
+      <Tab.Screen name="Library" component={Library}
+    options={{  
+      headerShown:false, 
+      tabBarIcon:()=>(
+        <Icon
+        name="library"
+        color="black"
+        size={ 25 }
+        />
+      )}}/>
     
   </Tab.Navigator>
   )
